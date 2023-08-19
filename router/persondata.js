@@ -13,7 +13,9 @@ router.post('/addData', async (req, res) => {
         // console.log(exist.data);
         
         if(exist){
-            exist.data.push(...data);
+            // console.log(exist.data)
+            exist.data.push(data);
+            // console.log(exist.data)
             await exist.save();
             res.json({ message: 'Data updated successfully' });
         }
