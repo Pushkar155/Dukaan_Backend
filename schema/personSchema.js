@@ -3,7 +3,7 @@ const mongoose=require("mongoose");
 const Personchema = new mongoose.Schema(
     {
         data:{
-            type:[[Object]],
+            type:[Object],
             required:true,
         },
         name:{
