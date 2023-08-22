@@ -17,7 +17,7 @@ dotenv.config();
 
 
 app.use("/api/person",authperson);
-app.use("api/log",loginauth);
+app.use("/api/log",loginauth);
 
 
 // app.get('/',(req,res)=>{
