@@ -10,7 +10,6 @@ router.post('/addData', async (req, res) => {
     // console.log("hello from post")
     try {
         let exist = await Personchema.findOne({name});
-        // console.log(exist.data);
         
         if(exist){
             // console.log(exist.data)
