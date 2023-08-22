@@ -15,6 +15,9 @@ app.use(cors());
 app.use(bodyparser.json());
 dotenv.config();
 
+app.use(cors({
+    origin: 'http://localhost:3000/'
+  }))
 
 app.use("/api/person",authperson);
 app.use("/api/log",loginauth);
