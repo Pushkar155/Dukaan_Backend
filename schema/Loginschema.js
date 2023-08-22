@@ -7,7 +7,7 @@ const LoginSchema = new mongoose.Schema(
             required:true,
         },
         password:{
-            type: String,
+            type: Number,
             required: true,
         }
     },
