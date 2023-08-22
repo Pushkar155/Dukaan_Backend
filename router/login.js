@@ -24,8 +24,10 @@ router.post('/login', async (req,res)=>{
 
 router.post('/loginuser', async (req,res)=>{
     const{name,password}=req.body;
+    // console.log("hello")
     try {
         let exist = await LoginSchema.findOne({name});
+        // console.log(exist.name,exist.password)
         if(exist){
             if(exist.password===password){
                 res.status(201).json({"message":"success full login"});
@@ -33,6 +35,9 @@ router.post('/loginuser', async (req,res)=>{
             if(exist.password!=password){
                 return  res.status(403).send('wrong password');
             }
+        }
+        if(!exist){
+            return res.status(403).json({"message":"User Not Exist"})
         }
         
     } catch (error) {
