@@ -8,6 +8,7 @@ const PORT= 3001;
 
 // all Auth
 const authperson=require("./router/persondata");
+const loginauth=require("./router/login");
 
 const app = express();
 app.use(cors());
@@ -16,6 +17,7 @@ dotenv.config();
 
 
 app.use("/api/person",authperson);
+app.use("api/log",loginauth);
 
 
 // app.get('/',(req,res)=>{

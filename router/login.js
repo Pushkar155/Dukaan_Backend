@@ -22,7 +22,7 @@ router.post('/login', async (req,res)=>{
     }
 })
 
-router.get('/login', async (req,res)=>{
+router.post('/loginuser', async (req,res)=>{
     const{name,password}=req.body;
     try {
         let exist = await LoginSchema.findOne({name});
@@ -39,3 +39,4 @@ router.get('/login', async (req,res)=>{
         return res.status(403).send("Wrong Credentials")
     }
 })
+module.exports=router;
