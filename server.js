@@ -11,23 +11,23 @@ const authperson=require("./router/persondata");
 const loginauth=require("./router/login");
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 app.use(bodyparser.json());
 dotenv.config();
 
-const allowedOrigins = ['http://localhost:3000','https://adminganesh.netlify.app/','https://shreeadmin.netlify.app/']
+// const allowedOrigins = ['http://localhost:3000','https://adminganesh.netlify.app/','https://shreeadmin.netlify.app/']
 
-const corsOptions = {
-    origin: (origin, callback) => {
-      if (allowedOrigins.includes(origin) || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    optionsSuccessStatus: 200,
-  };
-app.use(cors(corsOptions));
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//       if (allowedOrigins.includes(origin) || !origin) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error('Not allowed by CORS'));
+//       }
+//     },
+//     optionsSuccessStatus: 200,
+//   };
+app.use(cors());
 
 
 app.use("/api/person",authperson);
