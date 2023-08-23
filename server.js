@@ -15,9 +15,13 @@ app.use(cors());
 app.use(bodyparser.json());
 dotenv.config();
 
-app.use(cors({
-    origin: 'http://localhost:3000/'
-  }))
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  };
+  
+app.use(cors(corsOptions));
+
 
 app.use("/api/person",authperson);
 app.use("/api/log",loginauth);
