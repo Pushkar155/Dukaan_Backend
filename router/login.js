@@ -33,7 +33,7 @@ router.post('/loginuser', async (req,res)=>{
                 res.status(201).json({"message":"success full login"});
             }
             if(exist.password!=password){
-                return  res.status(403).send('wrong password');
+                return  res.status(403).json({"message":'wrong password'});
             }
         }
         if(!exist){
