@@ -21,6 +21,10 @@ const ProductdataSchema = new mongoose.Schema(
         type:{
             type:String,
             require:true
+        },
+        count: {
+            type: Number,
+            default: 1,
         }
     },
     {timestamps:true}
