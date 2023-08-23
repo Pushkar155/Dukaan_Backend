@@ -15,7 +15,7 @@ app.use(cors());
 app.use(bodyparser.json());
 dotenv.config();
 
-const allowedOrigins = ['http://localhost:3000','https://adminganesh.netlify.app']
+const allowedOrigins = ['http://localhost:3000','https://adminganesh.netlify.app/','https://shreeadmin.netlify.app/']
 
 const corsOptions = {
     origin: (origin, callback) => {
