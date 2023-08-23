@@ -9,6 +9,7 @@ const PORT= 3001;
 // all Auth
 const authperson=require("./router/persondata");
 const loginauth=require("./router/login");
+const productauth=require("./router/productdata");
 
 const app = express();
 // app.use(cors());
@@ -32,6 +33,7 @@ app.use(cors());
 
 app.use("/api/person",authperson);
 app.use("/api/log",loginauth);
+app.use("/api/product",productauth);
 
 
 // app.get('/',(req,res)=>{
