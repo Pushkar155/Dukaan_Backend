@@ -31,9 +31,8 @@ router.post('/loginuser', async (req,res)=>{
         // console.log(exist.password,name)
         if(exist){
             if(exist.password===password){
-                const token = jwt.sign({ userid: exist._id }, process.env.SECRETEKEY);
-                // res.json({ token });
-                // console.log(token)
+                const token = jwt.sign({ userId: exist.name }, process.env.SECRETEKEY);
+
                 return res.status(201).json({message:"success full login",token:token});
             }
             if(exist.password!=password){

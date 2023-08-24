@@ -57,7 +57,7 @@ router.put("/update/:name",verifyToken, async (req,res)=>{
       }
 })
 
-router.get("/productget",verifyToken,async (req,res)=>{
+router.get("/productget",async (req,res)=>{
     const data= await ProductdataSchema.find();
     res.status(200).send(data);
 })
