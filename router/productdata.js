@@ -27,6 +27,12 @@ router.post('/productadd',async (req,res)=>{
     }
 })
 
+router.put("/update/:name",async (req,res)=>{
+    const name = req.params.name;
+    console.log(name);
+    
+})
+
 router.get("/productget",async (req,res)=>{
     const data= await ProductdataSchema.find();
     res.status(200).send(data);
