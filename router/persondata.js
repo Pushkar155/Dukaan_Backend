@@ -2,9 +2,9 @@ const router=require("express").Router();
 
 // const personSchema = require("../schema/personSchema");
 const Personchema = require('../schema/personSchema');
+const verifyToken = require("../middleware/verifyToken");
 
-
-router.post('/addData', async (req, res) => {
+router.post('/addData',verifyToken, async (req, res) => {
     const { name, data,phone,totalamount,totalpaid } = req.body;
     console.log(totalamount,totalpaid);
     // console.log("hello from post")
@@ -37,7 +37,7 @@ router.post('/addData', async (req, res) => {
 
 
 });
-router.get("/getData",async (req,res)=>{
+router.get("/getData",verifyToken,async (req,res)=>{
     const person =await Personchema.find();
     console.log("hello");
     res.status(200).send(person);

@@ -1,8 +1,9 @@
 const router=require("express").Router();
 
 const ProductdataSchema =require("../schema/productsdataschema");
+const verifyToken= require("../middleware/verifyToken");
 
-router.post('/productadd',async (req,res)=>{
+router.post('/productadd',verifyToken,async (req,res)=>{
     const{name,companyname,price,quantity,type}=req.body;
     try {
         let exist= await ProductdataSchema.findOne({name});
@@ -27,7 +28,7 @@ router.post('/productadd',async (req,res)=>{
     }
 })
 
-router.put("/update/:name", async (req,res)=>{
+router.put("/update/:name",verifyToken, async (req,res)=>{
     const name = req.params.name;
     const{companyname,price,quantity,type}=req.body;
     const data={
@@ -56,7 +57,7 @@ router.put("/update/:name", async (req,res)=>{
       }
 })
 
-router.get("/productget",async (req,res)=>{
+router.get("/productget",verifyToken,async (req,res)=>{
     const data= await ProductdataSchema.find();
     res.status(200).send(data);
 })
