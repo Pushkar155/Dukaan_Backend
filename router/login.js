@@ -1,6 +1,7 @@
 const router=require("express").Router();
 
 const LoginSchema=require("../schema/Loginschema");
+const jwt = require("jsonwebtoken");
 
 
 router.post('/login', async (req,res)=>{
@@ -24,14 +25,14 @@ router.post('/login', async (req,res)=>{
 
 router.post('/loginuser', async (req,res)=>{
     const{name,password}=req.body;
-    // console.log(password,typeof(password),name)
-    // console.log("hello")
     try {
         let exist = await LoginSchema.findOne({name});
         // console.log(typeof(exist.password))
         if(exist){
             if(exist.password===password){
-               return res.status(201).json({"message":"success full login"});
+                const token = jwt.sign({ userId: user.id }, secretKey);
+                // res.json({ token });
+                return res.status(201).json({message:"success full login",token:token});
             }
             if(exist.password!=password){
                 return  res.status(403).json({"message":'wrong password'});
