@@ -25,13 +25,15 @@ router.post('/login', async (req,res)=>{
 
 router.post('/loginuser', async (req,res)=>{
     const{name,password}=req.body;
+    // console.log("hello")
     try {
         let exist = await LoginSchema.findOne({name});
-        // console.log(typeof(exist.password))
+        // console.log(exist.password,name)
         if(exist){
             if(exist.password===password){
-                const token = jwt.sign({ userId: user.id }, secretKey);
+                const token = jwt.sign({ userid: exist._id }, process.env.SECRETEKEY);
                 // res.json({ token });
+                // console.log(token)
                 return res.status(201).json({message:"success full login",token:token});
             }
             if(exist.password!=password){
